@@ -26,7 +26,7 @@ def main():
     # Get weather data
     snowfall, wind_speed = get_weather_data(lat, lon, weather_api_key)
     print(f"Snowfall in last hour: {snowfall} mm")
-    print(f"Wind speed: {wind_speed} m/s")
+    print(f"Wind speed: {wind_speed*3.6} km/h")
 
     # Convert units if necessary
     snowfall_cm = snowfall / 10  # Convert mm to cm
