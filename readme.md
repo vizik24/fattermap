@@ -150,3 +150,5 @@ Always consult local avalanche forecasts and consider hiring a qualified mountai
 Use this tool at your own risk. The developers are not responsible for any incidents arising from its use.
 
 **Contributions and feedback are welcome.**
+
+License: Non-Profit Open Software License 3.0 (NPOSL-3.0)
