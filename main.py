@@ -1,9 +1,19 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from get_slope_aspect import get_slope_aspect
 from get_weather_data import get_weather_data
 from calculate_avalanche_risk import calculate_avalanche_risk
 
 app = FastAPI()
+
+# ✅ Add CORS Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all domains (change this in production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all HTTP headers
+)
 
 @app.get("/")
 def root():
