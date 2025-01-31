@@ -1,6 +1,5 @@
-# get_slope_aspect.py
-
 import math
+import time  # ⬅️ Import time to add delays
 from get_elevation import get_elevation
 
 def get_slope_aspect(lat, lon, elevation_api_key):
@@ -17,13 +16,16 @@ def get_slope_aspect(lat, lon, elevation_api_key):
     }
 
     elevations = {}
-    for key, (p_lat, p_lon) in points.items():
+
+    for i, (key, (p_lat, p_lon)) in enumerate(points.items()):
+        if i > 0:  
+            time.sleep(1)  # ⬅️ Enforce a 1-second delay after the first request
+
         elevation = get_elevation(p_lat, p_lon, elevation_api_key)
         elevations[key] = elevation
         print(f"Elevation at {key}: {elevation} meters")
 
     # Calculate slopes in x and y directions
-    # Convert degrees latitude to meters (approximate conversion)
     meters_per_degree = 111000  # Approximate value
 
     dz_dx = (elevations['east'] - elevations['west']) / (2 * delta * meters_per_degree)
